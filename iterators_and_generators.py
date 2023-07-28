@@ -64,3 +64,17 @@ def factors(n): # generator that computes factors
 # in that the factors are not generated in strictly increasing order.
 # For example, factors(100) generates the series
 # 1, 100, 2, 50, 4, 25, 5, 20, 10
+
+# A generator can effectively produce an infinite series of values. As
+# an example, the Fibonacci numbers form a classic mathematical sequence,
+# starting with value 0, then value 1, and each subsequent value being the 
+# sum of the preceeding values. Hence, the Fibonacci series begins as: 0, 1, 1, 2, 3, 5, 8, 12 ...
+def fibonacci():
+    a = 0
+    b = 1
+    while True: # keep going...
+        yield a # report value a, during this pass
+        future = a + b
+        a = b # this will be next value reported
+        b = future  # and subsequently this
+        
