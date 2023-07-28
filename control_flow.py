@@ -55,3 +55,17 @@ big_index = 0
 for j in range(len(data)):
     if data[j] > data[big_index]:
         big_index = j
+
+# Break and Continue Statements
+
+# "break" statement terminates a while or for loop when executed within its body.
+
+target = ""
+found = False
+for item in data:
+    if item == target:
+        found = True
+        break
+
+# Python also supports a "continue" statement that causes the current "iteration" of a
+# loop body to stop, but with subsequent passes of the loop proceeding as expected.
