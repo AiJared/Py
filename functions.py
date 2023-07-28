@@ -62,3 +62,20 @@ prizes = count(grade, "A")
 data = grade
 target = "A"
 
+# Mutable Parameters
+
+# Python's parameter passing model has additional implications when a parameter is a mutable
+# object. Because the formal parameter is an alias for the actual parameter,
+# the body of the function may interact with the object in ways that change its state.
+# Considering again our sample invocation of the count function, if the body of the function
+# executes the command data.append("F"), the new entry is added to the
+# end of the list identified as data within the function, which is one and the same as
+# the list known on the caller as grades.
+
+# There are many legitimate cases in which a function may be designed (and clearly documented) to
+# modify the state of a parameter. As a concrete example, 
+# we present the following implementation of a method named scale that's
+# primary purpose is to multiply all entries of a numeric data set by a given factor.
+def scale(data, factor):
+    for j in range(len(data)):
+        data[j] *= factor
