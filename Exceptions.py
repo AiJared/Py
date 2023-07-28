@@ -71,3 +71,23 @@ while age <= 0:
             print("Your age must be positive")
     except (ValueError, EOFError):
         print("Invalid response")
+
+# we use the tuple, (ValueError, EOFError), to designate the types of errors that we
+# wish to catch with the except-clause. In this case, we catch either error,
+# print a response, and continue with another pass of the enclosing while loop.
+
+# In order to provide different responses to different types of errors, we may use
+# two or more except-clauses as part of a try-structure. We might wish to provide
+# a more specific error message, or perhaps to allow the exception to interrupt the
+# loop and be propagated to a higher context. We could implement such behaviour as follows:
+age = - 1
+while age <= 0:
+    try:
+        age = int(input("Enter your age in years: "))
+        if age <= 0:
+            print("Your age must be positive")
+    except ValueError:
+        print("That is an invalid age specification")
+    except EOFError:
+        print("There is an unexpected error reading input.")
+        raise # let's re-raise this exception
