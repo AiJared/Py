@@ -43,3 +43,31 @@ def sum(values):
 
 
 # Catching an Exception
+
+# Exceptions are objects that can be examined when caught. To do so, an identifier must
+# be established with a syntax as follows
+try:
+    fp = open("sample.txt")
+except Exception as e:
+    print("Unable to open the file:", e)
+
+# In this case, the name "e", denotes the instance of the exception that was thrown, and
+# printing it causes a detailed error message to be displayed.
+
+# A try statement may handle more than one type of exception. For example,
+# consider the following code.
+age = int(input("Enter your age in years:"))
+
+# The above code could fail for a variety of reasons. The call to input will raise an EOFError
+# if the console input fails. If the call to input completes successfully, the
+# int constructor raises "ValueError" if the user has not entered characters representing
+# a valid integer. If we want to handle two or more types of errors in the same way, we
+# can use a single except-statement, as in the following code.
+age = -1
+while age <= 0:
+    try:
+        age = int(input("Enter your age in years: "))
+        if age <= 0:
+            print("Your age must be positive")
+    except (ValueError, EOFError):
+        print("Invalid response")
