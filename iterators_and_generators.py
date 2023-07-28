@@ -46,4 +46,21 @@ def factors(n): # generator that computes factors
 # traditional function. It is illegal to combine yield and return statements 
 # in the same implementation.
 
-# 
+# We can greatly improve the efficiency of our generator for computing factors of a number
+# n, by only testing values up to the square root of that number, while reporting the factor
+# n // k that is associated with each k (unless n // k). We might implement
+# such a generator as follows:
+def factors(n): # generator that computes factors
+    k =1
+    while k + k < n:
+        if n % k == 0:
+            yield k
+            yield n // k
+        k += 1
+    if k * k == n: # special case if n is perfect square
+        yield k
+
+# We should not that this generator differs from our first version
+# in that the factors are not generated in strictly increasing order.
+# For example, factors(100) generates the series
+# 1, 100, 2, 50, 4, 25, 5, 20, 10
