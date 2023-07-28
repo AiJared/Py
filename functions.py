@@ -79,3 +79,28 @@ target = "A"
 def scale(data, factor):
     for j in range(len(data)):
         data[j] *= factor
+
+# Default Parameter Values
+
+# Python provides means for functions to support more than one possinle calling
+# signature. Such a function is said to be "polymorphic" which is a Greek for "many forms".
+# Most notably, functions can declare one or more default values for parameters, thereby
+# allowing the caller to invoke a function with varying numbers of 
+# actual parameters. For example
+
+def compute_gpa(grades, points= {"A+": 4.0, "A": 4.0, "A-": 3.67, "B+": 3.33, "B": 3.0, "B-": 2.667,
+          "C+": 2.33, "C":2.0, "C-":1.67, "D+": 1.33, "D": 1.0, "F": 0.0}):
+    num_courses = 0
+    total_points = 0
+    for g in grades:
+        if g in points:
+            num_courses += 1
+            total_points += points[g]
+    return total_points / num_courses
+
+# Keyword Parameters
+
+# Python supports an alternate mechanism for sending a parameter to a funtion
+# known as a "Keyword argument". A keyword argument is specified by explicitly
+# assigning an actual parameter to a formal parameter by name. 
+# For example foo(c=5)
