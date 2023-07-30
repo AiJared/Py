@@ -73,3 +73,29 @@ class CreditCard:
     def get_balance(self):
         """Return current balance."""
         return self._balance
+    
+    def charge(self, price):
+        """Charge given price to the card, assuming sufficient credit limit.
+        
+        Return True if charge was processed; False if charge was denied.
+        """
+        if price + self._balance > self._limit: # if charge would exceed limit
+            return False
+        else:
+            self._balance += price
+            return True
+        
+    def make_payment(self, amount):
+        """Process customer payment that reduces balance."""
+        self._balance -= amount
+
+"""
+We draw attention to the difference between the method signature as declared
+within the class versus that used by a caller. For example, from a user's perspective
+we have seen that the get_balance method takes zero parameters, yet within
+the class definition, self is an explicit parameter. Likewise, the charge method is
+declared within the class having two parameters(self and price), even though this
+method is called with one parameter, for example, as my_card.charge(200). The
+interpretter automatically binds the instance upon which the method is invoked to
+the self parameter.
+"""
