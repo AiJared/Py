@@ -108,7 +108,7 @@ A user can create an instance of the CreditCard class using a syntax as:
 cc = CreditCard("John Doe", "1st Bank", "5391 0375 9387 5309", 1000)
 """
 Internally, this results in a call to the specially named __init__ method that serves
-as the "constructor" of the class.. Its primary responsibility is to establish the tate of
+as the "constructor" of the class.. Its primary responsibility is to establish the state of
 a newly created credit card object with appropriate instance variables. In the case
 of the CreditCard class, each object maintains five instance variables, which we name:
 _customer, _bank, _account, _limit, and _balance.
@@ -119,3 +119,45 @@ the parameter customer; note that because customer is variable self._customer to
 note that because customer is "unqualified" on the right-hand side, it refers to the parameter in the 
 local namespace.
 """
+
+# Testing the Class
+
+"""
+In the code below we demonstrate some basic usage of the CreditClass,
+inserting three cards into a list named wallet. We use loops to make some charges
+and payments, and use various accessors to print results to the console.
+
+These tests are eclosed within a conditional, if__name__==__main__:,
+so that they can be embedded in the source code with the class definition.
+These tests provide "method coverage", as each of the methods is called at least
+once, but it does not provide "statement coverage", as there is never a case in which
+a charge is rejected due to the credit limit. This is not particularly advanced
+from testing as the output of the given tests must be manually audited in order to determine
+whether the class behaved as expected. Python has tools for more formal testing so that
+resulting values can be automatically compared to the predicted outcomes, with output
+generated only when an error is detected.
+"""
+if __name__ == "__main__":
+    wallet = []
+    wallet.append(CreditCard("John Bowman", "California Savings",
+                             '5391 0375 9387 5309', 2500))
+    wallet.append(CreditCard("John Bowman", "California Federal",
+                             '3485 0399 3395 1954', 3500))
+    wallet.append(CreditCard("John Bowman", "California Finance",
+                             "5391 0375 9387 5309", 5000))
+    
+    for val in range(1, 17):
+        wallet[0].charge(val)
+        wallet[1].charge(2*val)
+        wallet[2].charge(3*val)
+
+    for c in range(3):
+        print("Customer = ", wallet[c].get_customer())
+        print("Bank = ", wallet[c].get_bank())
+        print("Account = ", wallet[c].get_account())
+        print("Limit = ", wallet[c].get_limit())
+        print("Balance = ", wallet[c].get_balance())
+        while wallet[c].get_balance() > 100:
+            wallet[c].make_payment(100)
+            print("New balance = ", wallet[c].get_balance())
+        print()
