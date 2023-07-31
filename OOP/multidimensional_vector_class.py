@@ -21,3 +21,20 @@ total = 0
 for entry in v:# implicit iteration via __len__ and __getitem))
     total += entry
 """
+
+"""
+We implement many of the behavoirs by trivially invoking a similar behavior
+on the underlying list of coordiantes. However, our implementation of __add__
+is customizec. Assuming the two operands are vectors with the same length, this
+method creates a new vector and sets the coordinates of the new vector to be equal
+to the respective sum of the operands' elemets.
+
+It is interesting to note that the class definition automatically supports the syntax
+u = v + [5, 3, 10, -2, 1], resulting in a new vector that is the element-by-element "sum"
+of the first vector and the list instance. This is as a result of Python's "Polymorphism".
+Literally, "polymorphism" means "many forms". Although it is tempting to think of the other
+parameter of our __add__ method as another vector instance, we never declared it as such.
+Within the body, the only behaviors wre rely on for parameter other is that it supports
+len(other) and access to other[j]. Therefore, our code executes when the
+right-hand operand is a list of numbers (with matching length)
+"""
