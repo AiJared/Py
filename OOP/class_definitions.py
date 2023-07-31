@@ -99,3 +99,23 @@ method is called with one parameter, for example, as my_card.charge(200). The
 interpretter automatically binds the instance upon which the method is invoked to
 the self parameter.
 """
+
+# The Constructor
+
+"""
+A user can create an instance of the CreditCard class using a syntax as:
+"""
+cc = CreditCard("John Doe", "1st Bank", "5391 0375 9387 5309", 1000)
+"""
+Internally, this results in a call to the specially named __init__ method that serves
+as the "constructor" of the class.. Its primary responsibility is to establish the tate of
+a newly created credit card object with appropriate instance variables. In the case
+of the CreditCard class, each object maintains five instance variables, which we name:
+_customer, _bank, _account, _limit, and _balance.
+The initial values for the first four of those five are provided as explicit parameters that are
+sent by the user when instantiating the credit card, and assigned within the body of the constructor
+For example, the command, self._customer = customer, assigns the instance variable self._customer to
+the parameter customer; note that because customer is variable self._customer to the parameter customer;
+note that because customer is "unqualified" on the right-hand side, it refers to the parameter in the 
+local namespace.
+"""
