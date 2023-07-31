@@ -76,4 +76,4 @@ class Vector:
     def __str__(self):
         """Produce string representation of vector."""
         return "<" + str(self._coords)[1:-1] + ">"  # adapt list representation
-        
+
