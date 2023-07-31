@@ -3,7 +3,7 @@ An 'iterator' for a collection provides one key behavior: It supports a special 
 that returns the next element of the collection, any, or raises a StopIteration exception 
 to indicate that there are no further elements.
 
-Fortunately, it is rare to habe to directly implement an iterator class. Our preferred approach
+Fortunately, it is rare to have to directly implement an iterator class. Our preferred approach
 is the use of the 'generator' syntax which automatically produces an iterator yielded values.
 """
 
@@ -27,7 +27,7 @@ class SequenceIterator:
         self._k  = - 1          # will increment to 0 on first call to next
 
     def __next__(self):
-        """Return the next element, or else raise stopIteration error."""
+        """Return the next element, or else raise StopIteration error."""
         self._k += 1    # advance to next index
         if self._k < len(self._seq):
             return (self._seq[self._k]) # return the data element
