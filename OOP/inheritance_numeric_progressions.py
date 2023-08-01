@@ -95,3 +95,18 @@ established the new _increment data member for the arithmetic progression. The
 only remaining detail in our implemetation is to override the _advance method so 
 as to add the increment to the current value.
 """
+
+class ArithmeticProgression(Progression):               # Inherit from Progression
+    """Iterator producing an arithmetic progression."""
+    def __init__(self, increment=1, start=0):
+        """Create a new arithmetic progression.
+        
+        increment   the fixed constant to add each term (default 1)
+        start       the first term of the progression (defaut 0)
+        """
+        super().__init__(start)                          # initialize base class
+        self._increment = increment
+
+    def _advance(self):             # overried inherited version
+        """Update current value by adding the fixed increment."""
+        self._current += self._increment
