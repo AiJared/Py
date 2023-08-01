@@ -168,3 +168,15 @@ class FibonacciProgression(Progression):
     def _advance(self):
         """Update current value by taking sum of previous two."""
         self._prev, self._current = self._current, self._prev + self._current
+
+
+"""
+We use our progression framework to define a new FibonacciProgression class.
+This class is markedly different from those for the 
+arithmetic and geometric progressions because we cannot determine the next value
+of a Fibonacci series solely from the current one. We must maintain knowldge 
+of the two most recent values. The base Progression classs already provides storage
+of the most recent values as the _current data member. Our FibonacciProgression 
+class introduces a new member named, _prev, to store the value that proceeded the
+current one.
+"""
