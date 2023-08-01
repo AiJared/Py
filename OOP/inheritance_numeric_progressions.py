@@ -35,3 +35,40 @@ override _advance to provide a different rule for computing the next entry.
 For convenience, the Progression class alo provides a utility method, named
 print_progression, that displays the next n values of the progression.
 """
+
+class Progression:
+    """Iterator producing a generic progression.
+    
+    Default iterator produces the whole numbers 0, 1, 2, ...
+    """
+    def __init__(self, start=0):
+        """Initialize current to the first value of the progression."""
+        self._current = start
+
+    def _advance(self):
+        """Update self._current to a new value.
+        
+        This should be overriden by a subclass to customize progression.
+
+        By convention, if current is set to None, this designates the
+
+        end of a finite progression.
+        """
+        self._current += 1
+
+    def __next__(self):
+        """Return the next element, or else raise StopIteration error."""
+        if self._current is None:       # our convention to end a progression
+            raise StopIteration()
+        else:
+            answer = self._current      # record current values to return
+            self._advance()             # advance to prepare for next time
+            return answer
+        
+    def __iter__(self):
+        """By convention,an iterator must return itself as an iterator."""
+        return self
+    
+    def print_progression(self, n):
+        """Print next n values of the progression."""
+        print(''.join(str(next(self))for j in range(n)))
