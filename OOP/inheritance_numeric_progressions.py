@@ -179,4 +179,8 @@ of the two most recent values. The base Progression classs already provides stor
 of the most recent values as the _current data member. Our FibonacciProgression 
 class introduces a new member named, _prev, to store the value that proceeded the
 current one.
+
+
+With both previous values stored, the implementation of _advance is relatively
+straightforward.
 """
