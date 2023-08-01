@@ -164,9 +164,40 @@ class PredatoryCreditCard(CreditCard):
         if not success:
             self._balance += 5              # assess penalty
         return success                      # caller expects return value
-    def process_moth(self):
+    def process_month(self):
         """Assess monthly interest on outstanding balance."""
         if self._balance > 0:
             # if positive balance, convert APR to monthly multiplicative factor
             monthly_factor = pow(1 + self._apr, 1/12)
             self._balance = monthly_factor
+
+# Protected Members
+
+"""
+Our PredatoryCreditCard subclass directly accesses the data member self._balance,
+which was established by the parent CreditCard class. The underscored name, by
+convention, suggests that this is a "nonpublic" member, so we might ask if it is okay
+that we access it in this fashion. While general users of the class should not be
+doing so, our subclass has a somewhat privileged relationship with the superclass.
+Several object-oriented languages (e.g., Java, C++) draw a distintion for nonpublic,
+while members that are declared as "protected" or "private" access modes. Members
+that are declared protected are accessible to subclasses, but not to the general
+public, while members that are declared as private are not accessible to either. In
+this respect, we are using _balance as if it were protected (but not private).
+
+Python does not support formal access control, but names beginning with a single
+underscore are conventionbally akin to protected, while names beginning with a
+double underscore (other than speciap methods) are akin to private. In choosing
+use protected data, wehvae created a dependency in that our PredatoryCreditCard
+class might be compromised if the auther of the CreditCard class were to change
+the internal design. Note that we could have relied upon the public get_balance()
+method to retreive the current balance within the process_month method. But the
+current design of the CreditCard class does not afford an effective way for a sub-
+class to change balance, other than by direct manipulation of the data member.
+It may be tempting to use charge to add fees or interest to the balance. However,
+that method does not allow the balance to go above the customer's credit limit,
+even though a bank would presumably let interest compound beyond the credit
+limit, if warranted. If we were to redesign the original CreditCard class, we might
+add a nonpublic method, _set_balance, that could be used by subclasses to affect a
+change without directly accessing the data member_balance.
+"""
