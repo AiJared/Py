@@ -141,3 +141,30 @@ class GeometricProgression(Progression):        # inherit from Progression
     def _advance(self):     # override inherited version
         """Update current value by multipying it by the base value."""
         self._current *= self._base
+
+# A Fibonacci Progression Class
+
+"""
+As our final example, we demonstrate how to use our progression framework to
+produce a "Fibonacci progression". Each value of a Fibonacci series is the
+sum of the two most recent values. To begin the series, the first two values are
+conventionally 0 and 1, leading to the Fibonacci series 0,1,1,2,3,5,8,... . More
+generally, such a series can be generated from any two starting values. For example,
+if we start with values 4 and 6, the series proceeds as 4,6,10,16,26,42,... .
+"""
+
+class FibonacciProgression(Progression):
+    """Iterator producing a generalized Fibonacci progression."""
+
+    def __init__(self, first=0, second=1):
+        """Create a new fibonacci progression.
+        
+        first   the first term of the progression (default 0)
+        second  the second term if the progression (default 1)
+        """
+        super().__init__(first)     # start progression at first
+        self._prev = second - first # fictitious value preceding the first
+
+    def _advance(self):
+        """Update current value by taking sum of previous two."""
+        self._prev, self._current = self._current, self._prev + self._current
