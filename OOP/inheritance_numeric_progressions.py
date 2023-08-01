@@ -72,3 +72,26 @@ class Progression:
     def print_progression(self, n):
         """Print next n values of the progression."""
         print(''.join(str(next(self))for j in range(n)))
+
+# An Arithmetic Progression Class
+
+"""
+Our first of a specialized progression is an arithmeric progression. While
+the default progression increases its value by one in each step, an arithmetic
+progression adds a fixed constant to one term of the progression to produce the next.
+For example, using an increment of 4 for an arithmetuc progression that starts at 0
+results in the sequence 0, 4, 8, 12,...,
+
+The code below presents our implementation of an ArithmeticProgression 
+class, which relies on Progression as its base class. The constructor for this new
+class accepts both an increment value and a starting value as parameters, although
+default values for each are provided. By our convention, ArithmeticProgression(4)
+produces the sequence 0,4,6,12,..., and ArithmeticProgression(4, 1) produces
+the sequence 1, 5, 9, 13,....
+
+The body of the ArithmeticProgression constuctor calls the super constructor
+to initialize the _current data member to the desired start value. Then it directly
+established the new _increment data member for the arithmetic progression. The
+only remaining detail in our implemetation is to override the _advance method so 
+as to add the increment to the current value.
+"""
