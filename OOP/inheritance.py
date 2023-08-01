@@ -137,3 +137,16 @@ factor. For example, if the APR is 0.0825 interest per month, we compute
 per month. In this way, each $100 of debt will amass $8.25 of compounded interest in a year.
 """
 
+class PredatoryCreditCard(CreditCard):
+    """An extension to CreditCard that compounds interest and fees."""
+    def __init__(self, customer, bank, acnt, limit, apr):
+        """Create a new predatory credit card instance
+        The initial balance is zero
+
+        customer    the name of the consumer(e.g., 'John Bowman')
+        bank        the name of the bank(e.g., 'California Savings')
+        acnt        the account identifier(e.g., '5391 0375 5309')
+        limit       credit limit (measured in dollars)
+        apr         annual percentage rate(e.g., 0.0825 for 8.25% APR)
+
+        """
