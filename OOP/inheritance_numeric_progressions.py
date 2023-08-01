@@ -110,3 +110,34 @@ class ArithmeticProgression(Progression):               # Inherit from Progressi
     def _advance(self):             # overried inherited version
         """Update current value by adding the fixed increment."""
         self._current += self._increment
+
+# A Geometric Progression Class
+
+"""
+Our second example of a specialized progression is a geometric progression, in
+which each value is produced by multiplying the preceeding value by a fixed constant
+known as the "base" of the geometric progression. The starting point of a geometric
+progression is traditionally 1, rather than 0, because multiplying 0 by any 
+factor results in 0. As an example, a geometric progression with base 2 proceeds as
+1, 2, 4, 8, 16,....
+
+The code below presents our implemetation of GeometricProgression
+class. The constructor uses 2 as a default base 1 and as a default starting value, but
+either of those can be varied using optional parameters.
+"""
+
+class GeometricProgression(Progression):        # inherit from Progression
+    """Iterator producing a geometric progression."""
+
+    def __init__(self, base=2, start=1):
+        """Create a new geometric progression.
+        
+        base    the fixed constant multiplied to each term (default=2)
+        start   the first term of the progression (default=1)
+        """
+        super().__init__(start)
+        self._base = base
+
+    def _advance(self):     # override inherited version
+        """Update current value by multipying it by the base value."""
+        self._current *= self._base
