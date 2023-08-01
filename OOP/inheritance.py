@@ -14,3 +14,14 @@ implementation and "overrides" an exisiting method. A subclass may also "extend"
 superclass by providing brand new methods.
 """
 
+# Python's Exception Hierarchy
+
+"""
+Another example of a rich inheritance hierarchy is the organization of various
+exception types in Python. The BaseException class is the root of the entire hierarchy,
+while the more specific Exception class includes most of the error types that
+we have discussed. Programmers are welcome to define their own special exception
+classes to denote errors that may occur in the context of their application. Those
+user-defined exception types should be declared as subclasses of Exception
+"""
+
