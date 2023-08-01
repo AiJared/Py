@@ -96,3 +96,44 @@ class CreditCard:
     def make_payment(self, amount):
         """Process customer payment that reduces balance."""
         self._balance -= amount
+
+"""
+To indicate that the new class inherits from the existing CreditCard class, our
+definition begins with the syntax class PredatoryCreditCard(CreditCard). The body of
+the new class provides three member functions: __init__, charge, and process_month. The 
+__init__ constructor serves a very similar role to the original
+CreditCard constructor, except that for our new class, there is an extra parameter
+to specify the annual percentage rate. The body of our new constructor relies upon
+making a call to the inherited constructor to perform most of the initialization (in
+fact, everything other than the recording of the percentage rate). The mechanism
+for calling the inherited constructor relies on the syntac, super().
+"""
+
+# super().__init__(customer, bank, acnt, limit)
+
+"""
+calls the __init__ method that was inherited from the CreditCard superclass. Note
+well that this method only accepts four parameters. We record the APR value in a
+new field named _apr.
+
+In similar fashion, our PredatoryCreditCard class provides a new implementation 
+of the charge method that overides the inherited method. Yet, our
+implementation of the new method relies on a call to the inherited method, with syntax
+super().charge(price). The return value of that call designates whether
+the charge was successful. We examine that return value to decide whether to assess
+a fee, and in turn we return that value to the caller of method, so that the
+new version of charge has a similar outward interface as the original.
+
+The process_month method is a new behavior, so there is no inherited version
+upon which to rely. In our model, this method should be invokdes by the bank, 
+once each month, to add new interest charges o the customer's balance. The most
+challenging aspect in implementating this method is making sure we have working
+knowledge of how an annual rate translates to a monthly rate. We do
+not simply divide by twelve to get a monthly rate (that would be too
+predatory as it would result in a higher APR tha advertised). The correct computation
+is to take the twelfth-root of 1 + self._apr and use that multiplication
+factor. For example, if the APR is 0.0825 interest per month, we compute
+12th-root of 1.0825 which is close to 1.006628, and therefore charge 0.6628 interest
+per month. In this way, each $100 of debt will amass $8.25 of compounded interest in a year.
+"""
+
