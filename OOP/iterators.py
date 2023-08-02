@@ -37,3 +37,6 @@ class SequenceIterator:
     def __iter__(self):
         """By convention, an iterator must return itself as an iterator."""
         return self
+    
+i = SequenceIterator.__next__(10)
+print(i)
