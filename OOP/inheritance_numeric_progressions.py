@@ -182,5 +182,23 @@ current one.
 
 
 With both previous values stored, the implementation of _advance is relatively
-straightforward.
+straightforward. However the question arises as to how to initialize the previous value in the
+constructor. The desired first and second values are provided as parameters to the
+constructor. The first should be stored as _current so that it becomes the first
+one that is reported. Looking ahead, once the first value is reported, we eill do
+an assignment to set the new current value (which will be the second value
+reported), equal to the first value plus the "previous." By initializing the previous
+value to (second - first), the initial advancement will set the new current value to
+first + (second - first) = second, as disired.
 """
+
+# Testing Our Progression
+
+"""
+To complete our presentation, the code below provides a unit test for all of
+our progression classes and the code below it shows the output of that test.
+"""
+
+if __name__ == "__main__":
+    print("Default progression:")
+    Progression().print_progression(10)
