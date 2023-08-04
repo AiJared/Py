@@ -34,3 +34,23 @@ argument, all the other arguments to its right must also have default values. Th
 default arguments cannot follow default arguments.
 """
 
+# Keyword Arguments
+
+"""
+When we call a function with some values, these values get assigned to the arguments according
+to their position. For example in the function call above, "Bruce" got assigned to name and "How do you do"
+got assigned to msg.
+
+Python allows functions to be called using keyword arguments. When we call functions in this
+way, the order(position) of the arguments can be changed. Following calls to the above function
+are all valid and produce the same result.
+"""
+greet(name="Bruce", msg="How do you do?")       # 2 keyword arguments
+greet(msg="How do you do?", name="Bruce")       # 2 keyword arguments (out of order)
+greet("Bruce", msg="How do you do?")            # 1 positional argument, 1 keyword argument
+
+"""
+As we can see, we can mix positional arguments with keyword arguments during a function call.
+But we must keep in mind that keyword arguments must follow positional arguments. Having a
+positional argument after keyword arguments will result into errors.
+"""
