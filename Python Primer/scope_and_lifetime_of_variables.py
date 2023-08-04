@@ -28,3 +28,15 @@ scope. We can read these values from the inside the function but cannot change(w
 order to modify the value of variables outside the function, they must be declared as global
 variables using the keyword global.
 """
+
+# User-defined functions
+
+def my_addition(x, y):
+    """This is a function that adds tow
+    numbers and return the result"""
+    sum = x + y
+    return sum
+
+num1 = float(input("Enter a number: "))
+num2 = float(input("Enter another number: "))
+print("The sum is", my_addition(num1, num2))
