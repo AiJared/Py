@@ -54,3 +54,21 @@ As we can see, we can mix positional arguments with keyword arguments during a f
 But we must keep in mind that keyword arguments must follow positional arguments. Having a
 positional argument after keyword arguments will result into errors.
 """
+
+# Arbitrary Arguments
+
+"""
+Sometimes we do not know in advance the number of arguments that will be passed into a 
+function. Python allows us to handle this kind of situation through function calls with arbitrary
+number of arguments. In the function definition we use an asterisk(*) before the parameter name
+to denote this kind of argument. Here is an example.
+"""
+def greet(*names):
+    """This function greets all
+    the people in the names tuple."""
+
+    # name is a tuple with arguments
+    for name in names:
+        print("Hello", name)
+
+greet("Monica", "Luke", "Steve", "John")
