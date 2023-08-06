@@ -103,3 +103,19 @@ print(D)
 
 D = B.intersection(A)
 print(D)
+
+# Set Difference
+"""
+Difference of A and B (A-B) is a set of elements that are only in A but in B. Similarly, B-A
+is a set of elements that are in B but not in A. Difference is permed using - operator. Same can be
+accomplished using the method difference()
+"""
+
+E = A - B
+print(E)
+
+E = A.difference(B)
+print(E)
+
+F = B.difference(A)
+print(F)
