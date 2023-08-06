@@ -29,3 +29,21 @@ Python. To make a set without any elements we use the set() method without any a
 """
 i = set()
 print(type(a))
+
+# Changing a set in Python
+"""
+Sets are mutable. But since they are unordered, indexing have no meaning. We cannot access or
+change an element of set using indexing or slicing. Set does not support it. We can add single
+elements using the method add(). Multiple elements can be added using update() method. The
+update() method can take tuples, lists, strings or other sets as its arguments. In all cases,
+duplicates are avoided.
+"""
+my_set = {1, 3}
+my_set.add(2)
+print(my_set)
+
+my_set.update([2, 3, 4])
+print(my_set)
+
+my_set.update([4, 5], {1, 6, 8})
+print(my_set)
