@@ -47,3 +47,22 @@ print(my_set)
 
 my_set.update([4, 5], {1, 6, 8})
 print(my_set)
+
+# Removing Elements from a Set
+
+"""
+A particular item can be removed from set using methods like discard(), and remove(). The
+only difference between the two is that, while using discard() if item does not exist in the
+set, it remains unchanged. But remove() will raise an error in such condition.
+"""
+my_set = {1, 3, 4, 5, 6}
+my_set.discard(4)
+print(my_set)
+my_set.remove(6)
+print(my_set)
+
+"""
+Similarly, we can remove and return an item using the pop() method. Set being unorderd, there
+is no way of determining which item will be popped. It is compeletely arbitrary. We can also 
+remove all items of a set using clear(). 
+"""
