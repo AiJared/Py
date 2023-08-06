@@ -32,3 +32,13 @@ print("One third is {0:.3f}".format(1/3))
 
 # string alignment
 print("|{:<10}| {:^10}| {:>10}".format("butter", "bread", "ham"))
+
+# Old style formatting
+
+"""
+We can even format strings like the old sprintf() style used in C programming language. We
+use the % operator to accomplish this
+"""
+x = 12.3456789
+print("The value of x is %3.2f" %x)
+print("The value of x is %3.4f" %x)
