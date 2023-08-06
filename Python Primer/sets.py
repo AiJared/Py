@@ -119,3 +119,14 @@ print(E)
 
 F = B.difference(A)
 print(F)
+
+# Set Symmetric Difference
+"""
+Symmetric Difference of A and B is a set of element in both A and B except those common in
+both. Symmetric difference is performed using ^ operator. Same can be accomplished using the
+method symmetric_difference()
+"""
+G = A ^ B
+print(G)
+G = A.symmetric_difference(B)
+print(G)
