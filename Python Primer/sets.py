@@ -66,3 +66,27 @@ Similarly, we can remove and return an item using the pop() method. Set being un
 is no way of determining which item will be popped. It is compeletely arbitrary. We can also 
 remove all items of a set using clear(). 
 """
+
+# Python Set Operation
+"""
+Sets can be used to carry out mathematical set operations like union, intersection, difference and
+symmetric difference. We can do this with operators or methods. Let us consider the following
+two sets for the following operations.
+"""
+A = {1, 2, 3, 4, 5}
+B = {4, 4, 6, 7, 8}
+
+# Set Union
+"""
+Union of A and B is a set of all elements from both sets. Union is performed using | operator.
+Same can be done using the method union()
+"""
+C = A | B
+print(C)
+
+C = A.union(B)
+print(C)
+
+C = B.union(A)
+print(C)
+
