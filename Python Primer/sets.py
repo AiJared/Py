@@ -74,7 +74,7 @@ symmetric difference. We can do this with operators or methods. Let us consider 
 two sets for the following operations.
 """
 A = {1, 2, 3, 4, 5}
-B = {4, 4, 6, 7, 8}
+B = {4, 5, 6, 7, 8}
 
 # Set Union
 """
@@ -90,3 +90,16 @@ print(C)
 C = B.union(A)
 print(C)
 
+# Set Intersection
+"""
+Intersectio of A and B is a set of elements that are common in both sets. Intersection is
+performed using & operator. Same can be accomplished using the method intersection().
+"""
+D = A & B
+print(D)
+
+D = A.intersection(B)
+print(D)
+
+D = B.intersection(A)
+print(D)
