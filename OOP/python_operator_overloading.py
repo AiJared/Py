@@ -22,3 +22,13 @@ Whoa! That's a lot of complains. TypeError was raised since Python didn't know h
 two Point objects together. However, the good news is that we can teach this to Python through
 operator overloading. But first, let's get a notion about special functions.
 """
+
+# Special Functions in Python
+"""
+These are class functions that begins double underscore(__). The __init__() function is one of them.
+It gets called everytime we create a new object of that class. There are a ton of special
+functions in Python
+
+Using special functions, we can make our class compatible with built-in functions
+"""
+
