@@ -93,3 +93,40 @@ for char in rev_str("hello"):
 It turns out that this generator function not only works with string, but also with other kind of 
 iterables like list, tuple etc. 
 """
+
+# Python Generator Expression
+"""
+Simple generators can be easily created on the fly using generator expressions. It makes building
+generators easy. Same as lambda function creates an anonymous function, generator expression
+creates an anonymous generator function. The syntax for generator expression is similar to that
+of a list comprehension in Python. But the square brackets are replaced with round parentheses.
+
+The major difference between a list comprehension and a generator expression is that while list
+comprehension produces the entire list, generator expression produces one item at a time. They
+are kind of lazy, producing items only when asked for. For this reason, a generator expression is
+much more memory efficient than an equivalent list comprehension.
+"""
+
+my_list = [1, 3, 6, 10]
+
+# square each item using list comprehension
+print([x ** 2 for x in my_list])
+
+# same thing can be done using generator expression
+print((x ** 2 for x in my_list))
+
+"""
+We can see above that the generator expression did not produce the required result immediately.
+Instead, it returned a generator object which produces items on demand.
+"""
+a = (x ** 2 for x in my_list)
+print(next(a))
+print(next(a))
+print(next(a))
+
+"""
+Generator expressions can be used inside functions. When used in such a way, the round
+parenthsis can be dropped.
+"""
+print(sum(x ** 2 for x in my_list))
+print(max(x ** 2 for x in my_list))
