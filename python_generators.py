@@ -60,3 +60,15 @@ print(next(a))
 print(next(a))
 print(next(a))
 # finally when the function terminates, StopIteration is raised automatically on further calls.
+"""
+One interesting thing to note in the above example is that, the value of the variable n is remembered
+between each call. Unlike normal functions, the local variables are not destroyed when the
+function yields. Furthermore, the generator object can be iterated only once. To restart the
+process we need to create another generator object using something like a = my_gen().
+
+One final thing to noe is that we can use generators with for loops directly. This is because, a
+for loop takes an iterator and iterates over it using next() function. It automatically ends when
+StopIteration is raised.
+"""
+for item in my_gen():
+    print(item)
