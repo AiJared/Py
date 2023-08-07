@@ -66,3 +66,19 @@ Similarly, issubclass is used to check for class inheritance
 print(issubclass(Polygon, Triangle))
 print(issubclass(Triangle, Polygon))
 print(issubclass(bool, int))
+
+# Python Multiple Inhertance
+"""
+A class can be derived from more than one base classes. The syntax for multiple inheritance is similar to
+single inheritance.
+"""
+class Base1:
+    pass
+
+class Base2:
+    pass
+
+class MultiDerived(Base1, Base2):
+    pass
+
+"""The class MultiDerived inherits from both Base1 and Base2"""
