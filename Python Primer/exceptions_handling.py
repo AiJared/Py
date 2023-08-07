@@ -27,3 +27,33 @@ while True:
         print()
 
 print("The reciporcal of", x, "is", r)
+
+# Raising Exceptions
+"""
+In Python programming, exceptions are raised when corresponding errors occur at run time, but
+we can forcefully raise it using the keyword raise. We can also optionally pass in value to the
+exception to clarify why that exception was raised.
+"""
+try:
+    a = int(input("Enter a positive integer: "))
+    if a <= 0:
+        raise ValueError("That is not a positive integer!")
+except ValueError as ve:
+    print(ve)
+
+# try...finally
+"""
+The try statement in Python can have an optional finally clause. This clause is executed no
+matter what, and is generally used to release external resources. For example, we may be 
+connected to a remote data center through the network or working with a file or working with a
+Graphical User Interface (GUI). In all these circumstances, we must clean up the resources once
+used, whether it was successful or not. These actions (closing a file, GUI or disconnecting from 
+network) are performed in the finally clause to guarantee execution.
+"""
+try:
+    f = open("test.txt", encoding="utf-8")
+    # perform file operations
+finally:
+    f.close()
+
+"""This type of construct makes sure the file is closed even if the exception occurs."""
