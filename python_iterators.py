@@ -40,3 +40,35 @@ over any object that can return an iterator, for example list, string, file etc.
 """
 for element in my_list:
     print(element)
+
+# How for loop actually works
+"""
+As we see in the above example, the for loop was able to iterate automatically through the list.
+In fact the for loop can iterate over any iterable. Let's take a closer look at how the for loop is
+actually implemented.
+"""
+iterable = []
+
+for element in iterable:
+    """do something with element"""
+
+"""Is actually implemented as."""
+
+iter_obj = iter(iterable)
+
+while True:
+    try:
+        # get the next item
+        element = next(iter_obj)
+        # do something with element
+    except StopIteration:
+        # if StopIteration is raised, break from loop
+        break
+
+"""
+So internally, the for loop creates an iterator object, user_obj by calling iter() on the iterable.
+Ironically, this for loop is actually an infinite while loop. Inside the loop, it calls next() to get
+the next element and executes the body of the for loop with this value. After all the items
+exhaust, StopIteration is raised which is internally caught and the loop ends. Note that any
+other kinds of exception will pass through.
+"""
