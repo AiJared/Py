@@ -82,3 +82,18 @@ class MultiDerived(Base1, Base2):
     pass
 
 """The class MultiDerived inherits from both Base1 and Base2"""
+
+# Multilevel Inheritance in Python
+"""
+On the other hand we can inherit from a derived class. This is also called multilevel inheritance.
+Multilevel inheritance can be of any depth in Python.
+"""
+class Base:
+    pass
+
+class Derived1(Base):
+    pass
+
+class Derived2(Derived1):
+    pass
+
