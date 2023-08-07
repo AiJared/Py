@@ -97,3 +97,43 @@ class Derived1(Base):
 class Derived2(Derived1):
     pass
 
+# Method Resolution Order in Python
+"""
+Every class in Python is derived from the class object. It is the most base type in Python. So
+technically, all other class, either built-in or user-defined, are derived and all objects are
+instances of object class.
+"""
+print(issubclass(list, object))
+print(isinstance(5.5, object))
+print(isinstance("Hello", object))
+
+"""
+In the multiple inheritance scenario, any specified attribute is searched first in the current class.
+If not found, the search continues into parent classes in depth-first, left-right fashion without
+searching same class twice. So, in the above example of MultiDerived class the search order is
+[MultiDerived, Base1, Base2, object]. This order is also called linearization of MutliDerived
+class and the set of rules used to find this order is called Method Resolution Order (MRO). MRO
+must prevent local precedence ordering and also provide monotonicity. It ensures that a class
+always appears before its parents and in case of multiple parents, the order is the same as tuple of
+base classes.
+
+MRO of a class can be viewed as the __micro__ attribute or micro() method. The former returns a
+tuple while latter returns a list.
+"""
+print(MultiDerived.__mro__)
+print(MultiDerived.mro())
+
+"""
+Here is a little more complex multiple inheritance example and its visualization along with the
+MRO.
+"""
+class X: pass
+class Y: pass
+class Z: pass
+
+class A(X, Y): pass
+class B(Y, Z): pass
+
+class M(B, A, Z): pass
+
+print(M.mro())
