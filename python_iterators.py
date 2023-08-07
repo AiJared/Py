@@ -108,3 +108,52 @@ next(i)
 """We can also use a for loop to iterate over our iterator class."""
 for i in PowTwo(5):
     print(i)
+
+# Python Infinite Iterators
+"""
+It is not necessary that the item in an iterator object has to exhaust. There can be infinite iterators
+(which never ends). We must be careful when handling such iterators.
+
+Here is a simple example to demonstrate infinite iterators. The built-in function iter() can be
+called with two arguments where the first argument must be a callable object(function) and 
+second is the sentinel. The iterator calls this function until the returned value is equal to the
+sentinel.
+"""
+int()
+inf = iter(int, 1)
+next(inf)
+
+"""
+We can see that the int() function always returns 0. So passing it as iter(int, 1) will return an
+iterator that calls int() until the returned value equals 1. This never happens and we get an
+infinite iterator.
+
+We can also create our own infinite iterator. The following iterator will., theoretically, return all
+the odd numbers.
+"""
+class InfIter:
+    """Infinite iterator to return all odd numbers."""
+    def __iter__(self):
+        self.num = 1
+        return self
+    
+    def __next__(self):
+        num = self.num
+        self.num += 2
+        return num
+    
+"""A sample run would be as follows."""
+
+a = iter(InfIter())
+print(next(a))
+print(next(a))
+print(next(a))
+
+"""And so on..."""
+
+"""
+Be careful to include a terminating condition, when iterating over these types of infinite iterators.
+The advantage of using iterators is that they save resources. Like shown above, we could get all
+the odd numbers without storign the entire number system in memory. We can have infinite
+items (theoretically) in finite memory. Iterator also makes a code look cool.
+"""
