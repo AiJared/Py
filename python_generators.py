@@ -130,3 +130,71 @@ parenthsis can be dropped.
 """
 print(sum(x ** 2 for x in my_list))
 print(max(x ** 2 for x in my_list))
+
+# Why Generators are used in Python?
+
+# 1. Easy to implement.
+
+"""
+The following is an example to implement a sequence of power of 2's using
+iterator class.
+"""
+class PowTwo:
+    def __init__(self, max = 0):
+        self.max = max
+
+    def __iter__(self):
+        self.n = 0
+        return self
+    
+    def __next__(self):
+        if self.n > self.max:
+            raise StopIteration
+        
+        result = 2 ** self.n
+        self.n += 1
+        return result
+"""This was lengthy. Now let's do the same using a generator function."""
+
+def powTow(max=0):
+    n = 0
+    while n < max:
+        yield 2 ** n
+        n += 1
+
+"""
+Since, generators keep track of details automatically, it was concise and much cleaner in
+implementation.
+"""
+
+# 2. Memory Efficient
+"""Generator implementation in returning a sequence is memory friendly and is preferred
+since it only produces one item at a time."""
+
+# 3. Represent Infinite Stream
+"""
+Infinite streams cannot be stored in memory and since generators produce one item at a time, it can
+represent infinite stream of data. The following example can generate all even
+numbers(at least in theory).
+"""
+def all_even():
+    n = 0
+    while True:
+        yield n
+        n += 2
+
+# 4. Pipelining Generators
+"""
+Generators can be used to pipeline a series of operations. This is best illustrated using an example.
+
+Suppose we have a log file from a famous fast food chain. The log file has a column(4th
+column) that keeps track of the number of pizza sold every hour and we want to sum it to
+find the total pizaa sold in 5 years. Assume everything is in string and numbers that are
+not available are marked as "N/A". A generator implementation of this could be as follows.
+"""
+with open("sells.log") as file:
+    pizza_col = (line[3] for line in file)
+    per_hour = (int(x) for x in pizza_col if x != "N/A")
+    print("Total pizza sold = ", sum(per_hour))
+
+"""This pipeline is efficient and easy to read(and yes, a lot cooler!)."""
