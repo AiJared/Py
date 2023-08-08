@@ -53,3 +53,41 @@ summarized in the following points.
 2. The nested function must refer to a value defined in the enclosing function.
 3. The enclosing function must return the nested function.
 """
+
+# When To Use Closures?
+"""
+Closures can avoid the use of global values and provide some
+form of data hiding. It can also provide an object oriented solution to the problem. When there
+are few methods (one method in most cases) to be implemented in a class, closures can provide
+alternate and more elegant solutions. But when the number of attributes and methods get
+larger, better implement a class.
+
+Here is an example where a closure might be more prefereable than defining a class and
+making objects.
+"""
+def make_multiplier_of(n):
+    def multiplier(x):
+        return x * n
+    return multiplier
+
+"""Here is how we can use it."""
+times3 = make_multiplier_of(3)
+times5 = make_multiplier_of(5)
+print(times3(9))
+print(times5(3))
+print(times5(times3(2)))
+
+"""
+Decorators in Python make an extensive use of closures as well.
+
+On a concluding note, it is good to point out that the values that get enclosed in the closure
+function can be found out. All function objects have a __closure__ attribute that returns a tuple
+of cell objects if it is a closure function. Referring to the example above, we know times3 and
+times5 are closure functions.
+"""
+make_multiplier_of.__closure__
+times3.__closure__
+
+"""The cell object has the attribute cell_contents which stores the closed value."""
+print(times3.__closure__[0].cell_contents)
+print(times5.__closure__[0].cell_contents)
