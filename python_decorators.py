@@ -109,3 +109,43 @@ def ordinary():
 ordinary = make_pretty(ordinary)
 
 """This is just a syntactic sugar to implement decorators."""
+
+# Decorating Functions with Parameters
+"""
+The above decorator was simple and it only worked with functions that did not have any
+parameters. What if we had functions that took in parameters like below?
+"""
+def divide(a, b):
+    return a / b
+
+"""
+This function has two parameters, a and b. We know, it will give error if we pass in b as 0.
+"""
+
+"""
+Now let's make a decorator to check for this case that will cause the error.
+"""
+def smart_divide(func):
+    def inner(a, b):
+        print("I am going to divide", a ,"and", b)
+        if b == 0:
+            print("Whoops! cannot divide")
+            return
+        return func(a, b)
+    return inner
+
+@smart_divide
+def divide(a, b):
+    return a / b
+
+"""This new implementation will return None if the error condition arises."""
+a = divide(2, 5)
+print(a)
+print(divide(2,0))
+
+"""
+In this manner, we can decorate functions that take parameters. A keen observer will notice that
+parameters of the nested inner() function inside the decorator is same as the parameters of
+functions it decorates. Taking this into account, now we can make general decorators that work
+with any number of parameter. In Python, this magic is done as function()
+"""
