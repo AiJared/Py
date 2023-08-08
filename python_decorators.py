@@ -149,3 +149,31 @@ parameters of the nested inner() function inside the decorator is same as the pa
 functions it decorates. Taking this into account, now we can make general decorators that work
 with any number of parameter. In Python, this magic is done as function()
 """
+
+# Chaining Decorators in Python
+"""
+Multiple decorators can be chained in Python. This is to say, a function can be decorated
+multiple items with different (or same) decorators. We simply place the decorators above the
+desired function.
+"""
+def star(func):
+    def inner(*args, **kwargs):
+        print("*" * 30)
+        func(*args, **kwargs)
+        print("*" * 30)
+    return inner
+
+def percent(func):
+    def inner(*args, **kwargs):
+        print("%" * 30)
+        func(*args, **kwargs)
+        print("%" * 30)
+    return inner
+
+@star
+@percent
+def printer(msg):
+    print(msg)
+
+"""This will give the output."""
+printer("Hello")
