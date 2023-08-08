@@ -154,3 +154,65 @@ compatible and everybody is happy.
 Finally note that, the actual temperature value is stored in the private variable_temperature.
 The attribute temperature is a property object which provides interface to this private variable.
 """
+
+# Digging Deeper into Property
+""""
+In Python, property() is a built-in function that creates and returns a property object. The
+signature of this function is
+"""
+property(fget=None, fset=None, fdel=None, doc=None)
+
+"""
+Where, fget is function to get value of the attribute,
+fdel is function to delete the attribute doc is string (like a comment). As seen from the
+implementation, these function arguments are optional. So a property object can simply be
+created as follows.
+"""
+property()
+
+"""A property object has three methods, getter(), setter() and delete() to specify fget, fset
+and fdel at a later point. This means, the line.
+"""
+# temperature = property(get_temperature, set_temperature)
+
+"""
+Could have been broken down as
+"""
+# make empty property
+temperature = property()
+# assign fget
+# temperature = temperature.getter(get_temperature)
+# # assign fset
+# temperature = temperature.setter(set_temperature)
+
+"""
+These two pieces of codes are equivalent.
+
+Programmers familiar with decorators in Python can recognize that the above construct can be
+implemented as decorators. We can further go on and not define names get_temperature and
+set_temperature as they are unnecessary and pollute the class namespace. For this, we reuse
+the name temperature which defining our getter and setter functions. This is how it can be done.
+"""
+class Celsius:
+    def __nit__(self, temperature = 0):
+        self._temperature = temperature
+
+    def to_farenhiet(self):
+        return (self.temperature * 1.8) + 32
+    
+    @property
+    def temperature(self):
+        print("Getting value")
+        return self._temperature
+    
+    @temperature.setter
+    def temperature(self, value):
+        if value < -273:
+            raise ValueError("Temperature below -273 is not possible")
+        print("Setting value")
+        self._temperature = value
+
+"""
+The above implementation is both, simple and recommended way to make properties. You will
+most likely encounter these types of constructs when looking for property in Python.
+"""
