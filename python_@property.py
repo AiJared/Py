@@ -93,3 +93,64 @@ hundreds of thousands of lines of codes.
 
 All in all, our new update was not backward compatible. This is why property comes to rescue.
 """
+
+# The Power of Property
+"""
+The Pythonic way to deal with the above problem is to use property. Here is how we could have 
+achieved it
+"""
+
+class Celsius:
+    def __init__(self, temperature = 0):
+        self.temperature = temperature
+
+    def to_farenheit(self):
+        return (self.temperature * 1.8) + 32
+    
+    def get_temperature(self):
+        print("Getting value")
+        return self._temperature
+    
+    def set_temperature(self, value):
+        if value < - 273:
+            raise ValueError("Temperature below -273 is not possible")
+        print("Setting value")
+        self._temperature = value
+
+    temperature = property(get_temperature, set_temperature)
+
+"""
+We added a print() function inside get_temperature() and set_temperature() to clealy
+observe that they are being executed. The last line of the code, makes a property object
+temperature. Simply put, property attaches some code (get_temperature and
+set_temperature) to the member attribute accesses (temperature). Any code that retrieves the
+value of temperature will automatically call get_temperature() instead of a dictionary
+(__dict__) loop-up. Similarly, any code that assigns a value to temperature will automatically
+call set_temperature(). This is one cool feature in Python. Let's see it in action.
+"""
+c = Celsius()
+print(c)
+
+"""
+We can see above that set_temperature() was called even when we created an object. 
+The reason is that when an object is created, __init__() method gets called. This
+method has the line self.temperature = temperature. This assignment automatically called
+set_temperature()
+"""
+print(c.temperature)
+
+"""
+Similarly, any access like c.temperature automatically calls get_temperature(). This is what
+property does. Here are a few more examples.
+"""
+c.temperature = 37
+print(c.to_farenheit())
+
+"""
+By using property, we can see that, we modified our class and implemented the value constraint
+without any change required to the client code. Thus our implementation was backward
+compatible and everybody is happy.
+
+Finally note that, the actual temperature value is stored in the private variable_temperature.
+The attribute temperature is a property object which provides interface to this private variable.
+"""
