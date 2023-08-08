@@ -43,3 +43,13 @@ technique by which some data("Hello") gets attached to the code us called closur
 This value in the enclosing scope is remembered even when the variable goes out of scope or the
 function itself is removed from the current namespace.
 """
+# When Do We Have a Closure?
+"""
+As seen from the above example, we have a closure in Python when a nested function refrences
+a value in its enclosing scope. The creteria that must be met to create a closure in Python are
+summarized in the following points.
+
+1. We must have a nested function (function inside a function)
+2. The nested function must refer to a value defined in the enclosing function.
+3. The enclosing function must return the nested function.
+"""
