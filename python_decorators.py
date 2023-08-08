@@ -177,3 +177,12 @@ def printer(msg):
 
 """This will give the output."""
 printer("Hello")
+
+"""The order in which we chain decorators matter. If we had reversed the order as"""
+@percent
+@star
+def printer(msg):
+    print(msg)
+
+"""The execution would take place as,"""
+printer("Hello")
