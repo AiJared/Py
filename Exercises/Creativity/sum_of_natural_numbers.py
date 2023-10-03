@@ -26,3 +26,11 @@ We could have solved the above problem without using any loops. From mathematics
 that sum of natural numbers is given by n*(n+1)/2. We could have ussed this formula directly.
 For example, if n=16, the sum would be (16*17)/2 = 136
 """
+
+# The following function uses the mathematical formula to do the same
+def sum_of_n_numbers():
+    n = int(input("Enter the number of terms: "))
+    sum = n*(n+1) / 2
+    print("The sum is", sum)
+
+sum_of_n_numbers()
